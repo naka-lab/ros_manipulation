@@ -10,8 +10,8 @@ sudo apt-get install ros-noetic-moveit*
 pip install pyassimp pyserial
 
 cd ~/catkin_ws/src
-git clone https://github.com/gbiggs/crane_plus_arm.git
-git clone https://github.com/arebgun/dynamixel_motor.git
+git clone https://github.com/naka-tomo/crane_plus_arm.git
+git clone https://github.com/naka-tomo/dynamixel_motor.git
 cd ~/catkin_ws/
 catkin_make
 ```
