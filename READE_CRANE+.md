@@ -39,3 +39,12 @@ roslaunch crane_plus_moveit_config sim.launch
 ## サンプル
 - [位置指定](scripts/cranep_move_to_position.py)
   - 前に置かれたものを掴んで，右側へ移動
+  
+- カメラに映った物体の把持
+  - [カメラキャリブレーション](README.md)を実行
+  - ARマーカー認識を実行
+  ```
+  rosrun ros_vision ar_marker_recognition.py 
+  ```
+  - [ARマーカー](https://github.com/naka-lab/ros_vision/tree/master/scripts/ARMarker)を貼り付けた物体をアームの届く範囲に置く
+  - [物体把持プログラム](scripts/cranep_grasp_object.py)を実行
