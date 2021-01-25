@@ -8,6 +8,7 @@
 conda install pytorch
 cd ~/catkin_ws/src
 git clone https://github.com/naka-lab/ros_vision.git
+git clone https://github.com/naka-lab/ros_manipulation.git
 ```
 
 ### キャリブレーション手順
