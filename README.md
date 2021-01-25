@@ -12,7 +12,7 @@ git clone https://github.com/naka-lab/ros_manipulation.git
 ```
 
 ### キャリブレーション手順
-1. ARマーカーを設置して，アームの基準座標からのxy座標を確認する
+1. [キャリブレーション用ARマーカー](scripts/cabration_marker.pdf)を設置して，アームの基準座標からのxy座標を確認する
 2. マーカー認識を実行
 ```
 rosrun ros_vision ar_marker_recognition.py 
