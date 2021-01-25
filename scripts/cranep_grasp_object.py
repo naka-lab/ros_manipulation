@@ -52,7 +52,9 @@ def grasp(x, y, z):
     set_pose( x, y, z, theta, PI/2, 0  )
     open_gripper( False )
 
-    open_gripper()
+     # 初期位置
+    set_pose( 0, 0, 0.3, 0, PI/4, 0  )
+
 
 def transform( camx, camy, camz ):
     tf_listener.waitForTransform( "base_link" , "camera_link", rospy.Time(0), rospy.Duration(5)  )
