@@ -1,5 +1,7 @@
 # Crane X7
 
+[Crane X7](https://rt-net.jp/products/crane-x7/)を動かす例
+
 ## 準備
 - Crane X7のパッケージをダウンロード
 ```
