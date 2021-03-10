@@ -1,6 +1,7 @@
 # ros_manipulation
 
-## [CRANE+の場合](READE_CRANE+.md)
+- [CRANE+](READE_CRANE+.md)
+- [CRANE X7](README_CRANE_X7.md)
 
 ## カメラとアームのキャリブレーション
 ### インストール
