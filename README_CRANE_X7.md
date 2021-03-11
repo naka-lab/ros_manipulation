@@ -24,9 +24,10 @@ git clone https://github.com/naka-lab/ros_manipulation.git
 
 ## 実行
 - 実機の場合
-```
-roslaunch crane_x7_bringup demo.launch fake_execution:=false
-```
+  ```
+  roslaunch crane_x7_bringup demo.launch fake_execution:=false
+  ```
+  ※ロボットが動かない場合は，`sudo chmod 666 /dev/ttyUSB0`を実行する
 
 ## サンプル
 - [位置指定](scripts/cranex7_move_to_position.py)
