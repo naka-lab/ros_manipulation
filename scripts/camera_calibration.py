@@ -55,7 +55,7 @@ def estimate_transform( pos_from_cam, pos_from_arm ):
     optimizer = torch.optim.Adam( [rx, ry, rz, x, y, z] )
 
     loss_list = []
-    for i in range(4000):
+    for i in range(8000):
         Rx = torch.eye( 3, 3 )
         Rx[1,1] = torch.cos(-rx)
         Rx[1,2] = -torch.sin(-rx)
