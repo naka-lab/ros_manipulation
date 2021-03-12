@@ -38,9 +38,14 @@ def open_gripper( _open=True ):
         gripper.set_joint_value_target([0.1, 0.1])
     gripper.go()
 
+def set_init_pose():
+    arm.set_joint_value_target( [0, -0.3, 0, -2.5, 0, 1.2, 1.57] )
+    arm.go()
+
+
 def main():
     # 初期姿勢
-    set_pose( 0.2, 0, 0.26, PI/2, 0,  PI/2  )
+    set_init_pose()
     open_gripper()
 
     # 正面のものを掴む
@@ -48,14 +53,14 @@ def main():
     open_gripper(False)
 
     # 初期姿勢
-    set_pose( 0.2, 0, 0.26, PI/2, 0,  PI/2  )
+    set_init_pose()
 
     # 左前45度に置く
     set_pose( 0.3, 0.3, 0.1, PI/2, 0,  PI/2+PI/4  )
     open_gripper()
 
     # 初期姿勢
-    set_pose( 0.2, 0, 0.26, PI/2, 0,  PI/2  )
+    set_init_pose()
 
 if __name__ == '__main__':
     rospy.init_node("move_to_position")
