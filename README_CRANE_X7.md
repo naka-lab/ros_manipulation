@@ -35,3 +35,16 @@ git clone https://github.com/naka-lab/ros_manipulation.git
 
 - [動作の記録と再生](scripts/cranex7_teach_and_play.py)
   - 10秒間動作を記録して，そのまま再生
+
+- [トルクのオン・オフと関節角度・手先位置確認プログラム](scripts/cranex7_enable_torque.py)
+  - トルクオン：`rosrun ros_manipulation cranex7_enable_torque.py 1`
+  - トルクオフ：`rosrun ros_manipulation cranex7_enable_torque.py 0`
+
+- カメラに映った物体の把持
+  - [カメラキャリブレーション](README_CAMERACALIB.md)を実行
+  - ARマーカー認識を実行
+  ```
+  rosrun ros_vision ar_marker_recognition.py 
+  ```
+  - [ARマーカー](https://github.com/naka-lab/ros_vision/tree/master/scripts/ARMarker)を貼り付けた物体をアームの届く範囲に置く
+  - [物体把持プログラム](scripts/cranex7_grasp_object.py)を実行（初期状態では0番のマーカーを掴むようになっています）

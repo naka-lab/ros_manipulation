@@ -41,7 +41,7 @@ roslaunch crane_plus_moveit_config sim.launch
   - 前に置かれたものを掴んで，右側へ移動
   
 - カメラに映った物体の把持
-  - [カメラキャリブレーション](README.md)を実行
+  - [カメラキャリブレーション](README_CAMERACALIB.md)を実行
   - ARマーカー認識を実行
   ```
   rosrun ros_vision ar_marker_recognition.py 
