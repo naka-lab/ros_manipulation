@@ -5,14 +5,14 @@ Sciurus17をros noeticで動かす例（実機では未検証）
 ## 準備
 - インストール
 ```
-- cd ~/catkin_ws/src
-- git clone https://github.com/rt-net/sciurus17_ros.git
-- git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
-- sudo atp-get update
-- rosdep install -r -y --from-paths . --ignore-src
-- cd ~/catkin_ws
-- catkin_make
-- source ~/catkin_ws/devel/setup.bash
+cd ~/catkin_ws/src
+git clone https://github.com/rt-net/sciurus17_ros.git
+git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
+sudo atp-get update
+rosdep install -r -y --from-paths . --ignore-src
+cd ~/catkin_ws
+catkin_make
+source ~/catkin_ws/devel/setup.bash
 ```
 
 - そのままだとros noeticではエラーになるのでURDFを入れ替える
