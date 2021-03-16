@@ -19,7 +19,7 @@ Sciurus17をros noeticで動かす例（実機では未検証）
 ```
 roscd sciurus17_description/urdf/
 mv sciurus17.urdf.xacro sciurus17.urdf.xacro.bak
-wget **
+wget https://github.com/naka-lab/ros_manipulation/raw/main/noetic/sciurus17.urdf.xacro
 ```
 
 ## 実行
