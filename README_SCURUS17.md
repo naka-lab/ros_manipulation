@@ -14,8 +14,8 @@ Sciurus17をros noeticで動かす例
   catkin_make
   source ~/catkin_ws/devel/setup.bash
 
-  - roscd sciurus17_tools/scripts/
-  - ./create_udev_rules
+  roscd sciurus17_tools/scripts/
+  ./create_udev_rules
   ```
   インストール後PCを再起動する
 
