@@ -80,10 +80,10 @@ def set_neck_pose(yaw, pitch):
     return neck.get_result()
 
 def transform( camx, camy, camz ):
-    tf_listener.waitForTransform( "base_link" , "camera_link", rospy.Time(0), rospy.Duration(5)  )
+    tf_listener.waitForTransform( "base_link" , "camera_depth_optical_frame", rospy.Time(0), rospy.Duration(5)  )
 
     pos_from_cam = PointStamped()
-    pos_from_cam.header.frame_id = "camera_link"
+    pos_from_cam.header.frame_id = "camera_depth_optical_frame"
     pos_from_cam.point.x = camx
     pos_from_cam.point.y = camy
     pos_from_cam.point.z = camz
@@ -91,32 +91,6 @@ def transform( camx, camy, camz ):
     pos_trans = tf_listener.transformPoint( "base_link", pos_from_cam )
 
     return pos_trans
-
-"""
-def grasp_right():
-    set_init_pose()
-
-    # ハンドを開く
-    open_gripper(True, "right")
-
-    # 把持位置へ移動
-    set_pose( 0.4, 0.0, 0.1, 0, 0, PI/2, "right" )
-
-    # ハンドを閉じる
-    open_gripper(False, "right")
-
-    # 初期位置へ戻る
-    set_init_pose()
-
-    # 置く位置へ移動
-    set_pose( 0.4, -0.4, 0.1, 0, 0.0, PI/2-PI/4, "right" )
-
-    # ハンドを開く
-    open_gripper(True, "right")
-
-    # 初期位置へ戻る
-    set_init_pose()
-"""
 
 def grasp_left(x, y, z):
 
@@ -127,8 +101,8 @@ def grasp_left(x, y, z):
     open_gripper(True, "left")
 
     # 把持位置へ移動
-    if z<0.1:
-        z = 0.1
+    if z<0.15:
+        z = 0.15
     theta = math.atan2( y-0.3, x )
 
     # 少し手前に移動
@@ -154,8 +128,8 @@ def grasp_right(x, y, z):
     open_gripper(True, "right")
 
     # 把持位置へ移動
-    if z<0.1:
-        z = 0.1
+    if z<0.15:
+        z = 0.15
     theta = math.atan2( y+0.3, x )
 
     # 少し手前に移動
@@ -176,7 +150,7 @@ def grasp_right(x, y, z):
 
 def main():
     # 下を向く
-    set_neck_pose( 0, -45/180*PI )
+    set_neck_pose( 0, -60/180*PI )
 
     # 初期姿勢に移動
     set_init_pose()
@@ -192,7 +166,7 @@ def main():
             continue
         elif obj_info:
             for o in obj_info:
-                if o["label"]==0:
+                if o["label"]==9:
                     print("物体発見")
                     target = o["position"]
                     break
@@ -208,7 +182,7 @@ def main():
     grasp_left(p.point.x, p.point.y, p.point.z)
 
     # 右腕
-    grasp_right(p.point.x, p.point.y, p.point.z)
+    #grasp_right(p.point.x, p.point.y, p.point.z)
 
 
 if __name__ == '__main__':

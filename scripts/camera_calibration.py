@@ -115,7 +115,7 @@ def main():
     print( pos_from_cam )
     x,y,z,rx,ry,rz = estimate_transform( pos_from_cam, pos_from_arm )
     print("****** ターミナルで以下のコマンドを実行 ******")
-    print("rosrun tf static_transform_publisher %.4f %.4f %.4f %.4f %.4f %.4f /base_link /camera_link 100"%(x,y,z,rz,ry,rx) )
+    print("rosrun tf static_transform_publisher %.4f %.4f %.4f %.4f %.4f %.4f /base_link /camera_depth_optical_frame 100"%(x,y,z,rz,ry,rx) )
     print("**********************************************")
 
  

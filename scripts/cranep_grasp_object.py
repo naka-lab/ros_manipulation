@@ -57,10 +57,10 @@ def grasp(x, y, z):
 
 
 def transform( camx, camy, camz ):
-    tf_listener.waitForTransform( "base_link" , "camera_link", rospy.Time(0), rospy.Duration(5)  )
+    tf_listener.waitForTransform( "base_link" , "camera_depth_optical_frame", rospy.Time(0), rospy.Duration(5)  )
 
     pos_from_cam = PointStamped()
-    pos_from_cam.header.frame_id = "camera_link"
+    pos_from_cam.header.frame_id = "camera_depth_optical_frame"
     pos_from_cam.point.x = camx
     pos_from_cam.point.y = camy
     pos_from_cam.point.z = camz
