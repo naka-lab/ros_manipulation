@@ -98,7 +98,7 @@ def main():
             continue
         elif obj_info:
             for o in obj_info:
-                if o["label"]==０:
+                if o["label"]==0:
                     print("物体発見")
                     target = o["position"]
                     break
