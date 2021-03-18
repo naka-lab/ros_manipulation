@@ -1,6 +1,6 @@
 # Sciurus17
 
-Sciurus17をros noeticで動かす例（実機では未検証）
+Sciurus17をros noeticで動かす例
 
 ## 準備
 - インストール
@@ -13,13 +13,24 @@ rosdep install -r -y --from-paths . --ignore-src
 cd ~/catkin_ws
 catkin_make
 source ~/catkin_ws/devel/setup.bash
+
+- roscd sciurus17_tools/scripts/
+- ./create_udev_rules
 ```
+インストール後PCを再起動する
 
 - そのままだとros noeticではエラーになるのでURDFを入れ替える
 ```
 roscd sciurus17_description/urdf/
 mv sciurus17.urdf.xacro sciurus17.urdf.xacro.bak
-wget https://github.com/naka-lab/ros_manipulation/raw/main/noetic/sciurus17.urdf.xacro
+wget https://github.com/naka-lab/ros_manipulation/raw/main/sciurus17/sciurus17.urdf.xacro
+```
+
+- [画像認識](https://github.com/naka-lab/ros_vision)を利用するために，relasenseのlaunchファイルを入れかえる
+```
+roscd sciurus17_vision/launch/
+mv realsense.launch realsense.launch.bak
+wget https://github.com/naka-lab/ros_manipulation/raw/main/sciurus17/realsense.launch
 ```
 
 ## 実行
