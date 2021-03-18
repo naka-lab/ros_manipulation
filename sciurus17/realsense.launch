@@ -1,0 +1,40 @@
+<launch>
+  <arg name="serial_no"                   default=""/>
+  <arg name="json_file_path"              default=""/>
+  <arg name="camera"                      default="camera"/>
+  <arg name="tf_prefix"                   default="$(arg camera)"/>
+
+  <arg name="enable_pointcloud"           default="false"/>
+  <arg name="pointcloud_texture_stream"   default="RS2_STREAM_COLOR"/>
+  <arg name="pointcloud_texture_index"    default="0"/>
+  <arg name="enable_sync"                 default="false"/>
+  <arg name="align_depth"                 default="true"/>
+
+  <arg name="depth_width"                 default="640"/>
+  <arg name="depth_height"                default="480"/>
+  <arg name="enable_depth"                default="true"/>
+  <arg name="depth_fps"                   default="30"/>
+
+  <arg name="infra_width"                 default="640"/>
+  <arg name="infra_height"                default="480"/>
+  <arg name="enable_infra1"               default="true"/>
+  <arg name="enable_infra2"               default="true"/>
+  <arg name="infra_fps"                   default="30"/>
+
+  <arg name="color_width"                 default="640"/>
+  <arg name="color_height"                default="480"/>
+  <arg name="enable_color"                default="true"/>
+  <arg name="color_fps"                   default="30"/>
+
+  <arg name="filters"                     default="pointcloud"/>
+  <arg name="clip_distance"               default="-1"/>
+  <arg name="initial_reset"               default="false"/>
+
+  <remap from="depth/color/points"        to="depth_registered/points"/>
+
+  <include file="$(find realsense2_camera)/launch/rs_rgbd.launch">
+
+    <arg name="align_depth"               value="$(arg align_depth)"/>
+
+  </include>
+</launch>
