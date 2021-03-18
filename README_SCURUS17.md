@@ -52,5 +52,5 @@ roslaunch sciurus17_gazebo sciurus17_with_table.launch
   rosrun ros_vision ar_marker_recognition.py /camera/depth_registered/points:=/sciurus17/camera/depth_registered/points
   ```
   （SciurusではRealsenseのトピック名が変わっているのでトピック名を変更している．他の物体認識系のプログラムも上記のようにトピック名を変えると使用可能．）
-  - ARマーカーを貼り付けた物体をアームの届く範囲に置く
+  - [ARマーカー](https://github.com/naka-lab/ros_vision/tree/master/scripts/ARMarker)を貼り付けた物体をアームの届く範囲に置く
   - [物体把持プログラム](scripts/sciurus_grasp_object.py)を実行（初期状態では0番のマーカーを掴むようになっています）
