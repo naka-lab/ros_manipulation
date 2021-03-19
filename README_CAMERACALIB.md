@@ -18,7 +18,12 @@
   ```
 4. 実行後表示されたコマンドをコピーして実行．
   ```
-  rosrun tf static_transform_publisher 0.0354 -0.1414 0.1211 -1.3768 0.1132 -1.9365 /base_link /camera_link 100
+  rosrun tf static_transform_publisher 0.0354 -0.1414 0.1211 -1.3768 0.1132 -1.9365 /base_link /camera_depth_optical_frame 100
   ```
 
 ![calib](calib.jpg)
+
+5. /camera_linkも必要であれば以下を実行（物体を掴むだけなら必要ない）
+  ```
+  rosrun tf static_transform_publisher 0 0 0 0 -1.57 1.57  /camera_depth_optical_frame /camera_link 100
+  ```
