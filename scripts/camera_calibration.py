@@ -9,6 +9,7 @@ import sys
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 
     
@@ -114,9 +115,11 @@ def main():
     pos_from_cam = recieve_ar_makers()
     print( pos_from_cam )
     x,y,z,rx,ry,rz = estimate_transform( pos_from_cam, pos_from_arm )
-    print("****** ターミナルで以下のコマンドを実行 ******")
+    print("****** 以下のコマンドを実行します ******")
     print("rosrun tf static_transform_publisher %.4f %.4f %.4f %.4f %.4f %.4f /base_link /camera_depth_optical_frame 100"%(x,y,z,rz,ry,rx) )
     print("**********************************************")
+
+    os.system( "rosrun tf static_transform_publisher %.4f %.4f %.4f %.4f %.4f %.4f /base_link /camera_depth_optical_frame 100"%(x,y,z,rz,ry,rx) )
 
  
         
