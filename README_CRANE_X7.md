@@ -53,3 +53,4 @@ git clone https://github.com/naka-lab/ros_manipulation.git
 - ハンドが高負荷で落ちる場合
   - Craneのノードを立ち上げた状態で`rosrun rqt_reconfigure rqt_reconfigure`を実行
   - `crane_x7/crane_x7_control/crane_x7_gripper_finger_a_joint`にある`current_limit`の値を小さくする
+  - [プログラム](scripts/cranex7_param_reconfigure.py)からも変更可能
