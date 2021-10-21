@@ -48,3 +48,8 @@ git clone https://github.com/naka-lab/ros_manipulation.git
   ```
   - [ARマーカー](https://github.com/naka-lab/ros_vision/tree/master/scripts/ARMarker)を貼り付けた物体をアームの届く範囲に置く
   - [物体把持プログラム](scripts/cranex7_grasp_object.py)を実行（初期状態では0番のマーカーを掴むようになっています）
+
+## トラブルシューティング
+- ハンドが高負荷で落ちる場合
+  - Craneのノードを立ち上げた状態で`rosrun rqt_reconfigure rqt_reconfigure`を実行
+  - `crane_x7/crane_x7_control/crane_x7_gripper_finger_a_joint`にある`current_limit`の値を小さくする
