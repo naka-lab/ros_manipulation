@@ -98,11 +98,10 @@ def estimate_transform( pos_from_cam, pos_from_arm ):
 def main():
     rospy.init_node("camera_calibration")
 
-    if len(sys.argv)<3:
-        print( "引数に4点マーカーの中心位置のxy座標を指定" )
-        print( "例：python camera_calibration.py x y" )
-        return 
-    else:
+    # キャリブレーション結果の保存先
+    path = os.path.abspath(__file__) + ".param"
+ 
+    if len(sys.argv)==3:
         cx = float(sys.argv[1])
         cy = float(sys.argv[2])
         pos_from_arm = torch.Tensor([
@@ -112,9 +111,24 @@ def main():
             [cx-0.05, cy-0.05, 0]
         ])
 
-    pos_from_cam = recieve_ar_makers()
-    print( pos_from_cam )
-    x,y,z,rx,ry,rz = estimate_transform( pos_from_cam, pos_from_arm )
+        pos_from_cam = recieve_ar_makers()
+        print( pos_from_cam )
+        x,y,z,rx,ry,rz = estimate_transform( pos_from_cam, pos_from_arm )
+
+        # キャリブレーション結果を保存
+        np.savetxt( path, [x,y,z,rx,ry,rz] )
+
+    elif len(sys.argv)==2 and sys.argv[1]=="pub":
+        x,y,z,rx,ry,rz = np.loadtxt( path )
+    else:
+        print( "*** キャリブレーションの実行 ***" )
+        print( "引数に4点マーカーの中心位置のxy座標を指定" )
+        print( "例：python camera_calibration.py x y" )
+        print()
+        print( "*** 前回のキャリブレーション結果を再利用 ***" )
+        print( "python camera_calibration.py pub" )
+        return 
+
     print("****** 以下のコマンドを実行します ******")
     print("rosrun tf static_transform_publisher %.4f %.4f %.4f %.4f %.4f %.4f /base_link /camera_depth_optical_frame 100"%(x,y,z,rz,ry,rx) )
     print("**********************************************")
