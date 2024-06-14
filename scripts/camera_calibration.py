@@ -10,6 +10,8 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import tf
+from geometry_msgs.msg import PointStamped
 
 
     
@@ -19,7 +21,7 @@ def recieve_ar_makers():
         data = rospy.wait_for_message( "/ar_marker_rec/object_info", String )
         #print( data.data )
 
-        data = yaml.load(data.data)
+        data = yaml.safe_load(data.data)
 
         print(len(data))
 
@@ -34,6 +36,21 @@ def recieve_ar_makers():
             if len(marker_pos)==4:
                 break
 
+    # camera_linkから見た座標系に変換
+    tf_listener = tf.TransformListener()
+    tf_listener.waitForTransform( "camera_link" , "camera_depth_optical_frame", rospy.Time(0), rospy.Duration(5)  )
+    for i in range(4):
+        pos_from_cam = PointStamped()
+        pos_from_cam.header.frame_id = "camera_depth_optical_frame"
+        pos_from_cam.point.x = marker_pos[i][0]
+        pos_from_cam.point.y = marker_pos[i][1]
+        pos_from_cam.point.z = marker_pos[i][2]
+
+        pos_trans = tf_listener.transformPoint( "camera_link", pos_from_cam )
+
+        marker_pos[i][0] = pos_trans.point.x 
+        marker_pos[i][1] = pos_trans.point.y
+        marker_pos[i][2] = pos_trans.point.z
     return marker_pos
 
 def estimate_transform( pos_from_cam, pos_from_arm ):
@@ -130,10 +147,10 @@ def main():
         return 
 
     print("****** 以下のコマンドを実行します ******")
-    print("rosrun tf static_transform_publisher %.4f %.4f %.4f %.4f %.4f %.4f /base_link /camera_depth_optical_frame 100"%(x,y,z,rz,ry,rx) )
+    print("rosrun tf static_transform_publisher %.4f %.4f %.4f %.4f %.4f %.4f /base_link /camera_link 100"%(x,y,z,rz,ry,rx) )
     print("**********************************************")
 
-    os.system( "rosrun tf static_transform_publisher %.4f %.4f %.4f %.4f %.4f %.4f /base_link /camera_depth_optical_frame 100"%(x,y,z,rz,ry,rx) )
+    os.system( "rosrun tf static_transform_publisher %.4f %.4f %.4f %.4f %.4f %.4f /base_link /camera_link 100"%(x,y,z,rz,ry,rx) )
 
  
         
