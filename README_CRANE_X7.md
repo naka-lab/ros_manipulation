@@ -8,7 +8,8 @@
 cd ~/catkin_ws/src
 git clone https://github.com/rt-net/crane_x7_ros.git
 git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
-rosdep install -r -y --from-paths --ignore-src crane_x7_ros
+git clone https://github.com/rt-net/crane_x7_description
+rosdep install -r -y -i --from-paths .
 cd ~/catkin_ws
 catkin_make
 source ~/catkin_ws/devel/setup.bash
