@@ -16,6 +16,11 @@ sudo chmod 666 /dev/ttyUSB0
 pip install pyassimp
 ```
 
+- catkin_makeで`AttributeError: module 'em' has no attribute 'RAW_OPT'`というエラーが出る場合，emptyをダウングレードする
+  ```
+  pip install empy==3.3.4
+  ```
+
 - サンプル類をダウンロード
 ```
 cd ~/catkin_ws/src
