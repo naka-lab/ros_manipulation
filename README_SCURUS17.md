@@ -8,7 +8,7 @@ Sciurus17をros noeticで動かす例
   cd ~/catkin_ws/src
   git clone https://github.com/rt-net/sciurus17_ros.git
   git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
-  sudo atp-get update
+  sudo apt-get update
   rosdep install -r -y --from-paths . --ignore-src
   cd ~/catkin_ws
   catkin_make
